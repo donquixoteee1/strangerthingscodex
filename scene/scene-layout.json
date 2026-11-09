@@ -1,0 +1,587 @@
+{
+  "width": 920,
+  "height": 450,
+  "sofaRatio": 0.7,
+  "provenance": "reference-painted-letter-extraction",
+  "lights": [
+    {
+      "id": "light-A",
+      "letter": "A",
+      "x": 159,
+      "y": 67,
+      "color": "#ffd079"
+    },
+    {
+      "id": "light-B",
+      "letter": "B",
+      "x": 232,
+      "y": 51,
+      "color": "#77d9a1"
+    },
+    {
+      "id": "light-C",
+      "letter": "C",
+      "x": 320,
+      "y": 48,
+      "color": "#ff7260"
+    },
+    {
+      "id": "light-D",
+      "letter": "D",
+      "x": 403,
+      "y": 57,
+      "color": "#8acdf2"
+    },
+    {
+      "id": "light-E",
+      "letter": "E",
+      "x": 489,
+      "y": 56,
+      "color": "#f6dba7"
+    },
+    {
+      "id": "light-F",
+      "letter": "F",
+      "x": 576,
+      "y": 50,
+      "color": "#ffd079"
+    },
+    {
+      "id": "light-G",
+      "letter": "G",
+      "x": 660,
+      "y": 43,
+      "color": "#77d9a1"
+    },
+    {
+      "id": "light-H",
+      "letter": "H",
+      "x": 748,
+      "y": 20,
+      "color": "#ff7260"
+    },
+    {
+      "id": "light-I",
+      "letter": "I",
+      "x": 88,
+      "y": 190,
+      "color": "#8acdf2"
+    },
+    {
+      "id": "light-J",
+      "letter": "J",
+      "x": 166,
+      "y": 200,
+      "color": "#f6dba7"
+    },
+    {
+      "id": "light-K",
+      "letter": "K",
+      "x": 244,
+      "y": 208,
+      "color": "#ffd079"
+    },
+    {
+      "id": "light-L",
+      "letter": "L",
+      "x": 324,
+      "y": 215,
+      "color": "#77d9a1"
+    },
+    {
+      "id": "light-M",
+      "letter": "M",
+      "x": 410,
+      "y": 206,
+      "color": "#ff7260"
+    },
+    {
+      "id": "light-N",
+      "letter": "N",
+      "x": 495,
+      "y": 196,
+      "color": "#8acdf2"
+    },
+    {
+      "id": "light-O",
+      "letter": "O",
+      "x": 578,
+      "y": 167,
+      "color": "#f6dba7"
+    },
+    {
+      "id": "light-P",
+      "letter": "P",
+      "x": 666,
+      "y": 159,
+      "color": "#ffd079"
+    },
+    {
+      "id": "light-Q",
+      "letter": "Q",
+      "x": 805,
+      "y": 157,
+      "color": "#77d9a1"
+    },
+    {
+      "id": "light-R",
+      "letter": "R",
+      "x": 116,
+      "y": 343,
+      "color": "#ff7260"
+    },
+    {
+      "id": "light-S",
+      "letter": "S",
+      "x": 163,
+      "y": 328,
+      "color": "#8acdf2"
+    },
+    {
+      "id": "light-T",
+      "letter": "T",
+      "x": 242,
+      "y": 334,
+      "color": "#f6dba7"
+    },
+    {
+      "id": "light-U",
+      "letter": "U",
+      "x": 324,
+      "y": 342,
+      "color": "#ffd079"
+    },
+    {
+      "id": "light-V",
+      "letter": "V",
+      "x": 495,
+      "y": 339,
+      "color": "#77d9a1"
+    },
+    {
+      "id": "light-W",
+      "letter": "W",
+      "x": 572,
+      "y": 322,
+      "color": "#ff7260"
+    },
+    {
+      "id": "light-X",
+      "letter": "X",
+      "x": 663,
+      "y": 320,
+      "color": "#8acdf2"
+    },
+    {
+      "id": "light-Y",
+      "letter": "Y",
+      "x": 748,
+      "y": 302,
+      "color": "#f6dba7"
+    },
+    {
+      "id": "light-Z",
+      "letter": "Z",
+      "x": 828,
+      "y": 306,
+      "color": "#ffd079"
+    }
+  ],
+  "wires": [
+    "M 26 68 Q 55 72 60 43 Q 110 66 159 57 Q 220 48 320 39 Q 390 58 490 45 Q 560 37 660 24 Q 770 -8 842 15 Q 872 58 875 140",
+    "M 875 140 Q 820 148 787 137 Q 720 135 666 145 Q 605 150 578 158 Q 500 179 410 191 Q 340 206 324 200 Q 230 198 166 183 Q 104 164 88 174 Q 48 164 33 187",
+    "M 33 187 Q 24 260 12 352 Q 4 400 62 414 Q 87 423 94 358 Q 104 322 116 327 Q 151 312 163 317 Q 203 326 242 322 Q 298 326 324 326 Q 400 333 495 328 Q 535 319 572 313 Q 645 302 663 303 Q 708 290 748 288 Q 800 276 828 284 Q 865 276 892 286 Q 902 347 914 414"
+  ],
+  "referenceMeasurements": [
+    {
+      "letter": "A",
+      "sourceBounds": [
+        480,
+        270,
+        550,
+        346
+      ],
+      "sourceBulb": [
+        509,
+        257
+      ],
+      "height": 76,
+      "width": 70
+    },
+    {
+      "letter": "B",
+      "sourceBounds": [
+        560,
+        260,
+        628,
+        346
+      ],
+      "sourceBulb": [
+        582,
+        241
+      ],
+      "height": 86,
+      "width": 68
+    },
+    {
+      "letter": "C",
+      "sourceBounds": [
+        638,
+        255,
+        708,
+        335
+      ],
+      "sourceBulb": [
+        670,
+        238
+      ],
+      "height": 80,
+      "width": 70
+    },
+    {
+      "letter": "D",
+      "sourceBounds": [
+        720,
+        255,
+        796,
+        341
+      ],
+      "sourceBulb": [
+        753,
+        247
+      ],
+      "height": 86,
+      "width": 76
+    },
+    {
+      "letter": "E",
+      "sourceBounds": [
+        812,
+        253,
+        883,
+        333
+      ],
+      "sourceBulb": [
+        839,
+        246
+      ],
+      "height": 80,
+      "width": 71
+    },
+    {
+      "letter": "F",
+      "sourceBounds": [
+        898,
+        250,
+        970,
+        329
+      ],
+      "sourceBulb": [
+        926,
+        240
+      ],
+      "height": 79,
+      "width": 72
+    },
+    {
+      "letter": "G",
+      "sourceBounds": [
+        974,
+        243,
+        1057,
+        323
+      ],
+      "sourceBulb": [
+        1010,
+        233
+      ],
+      "height": 80,
+      "width": 83
+    },
+    {
+      "letter": "H",
+      "sourceBounds": [
+        1070,
+        226,
+        1141,
+        314
+      ],
+      "sourceBulb": [
+        1098,
+        210
+      ],
+      "height": 88,
+      "width": 71
+    },
+    {
+      "letter": "I",
+      "sourceBounds": [
+        377,
+        399,
+        451,
+        485
+      ],
+      "sourceBulb": [
+        438,
+        380
+      ],
+      "height": 86,
+      "width": 74
+    },
+    {
+      "letter": "J",
+      "sourceBounds": [
+        480,
+        402,
+        557,
+        486
+      ],
+      "sourceBulb": [
+        516,
+        390
+      ],
+      "height": 84,
+      "width": 77
+    },
+    {
+      "letter": "K",
+      "sourceBounds": [
+        575,
+        401,
+        643,
+        485
+      ],
+      "sourceBulb": [
+        594,
+        398
+      ],
+      "height": 84,
+      "width": 68
+    },
+    {
+      "letter": "L",
+      "sourceBounds": [
+        653,
+        396,
+        723,
+        488
+      ],
+      "sourceBulb": [
+        674,
+        405
+      ],
+      "height": 92,
+      "width": 70
+    },
+    {
+      "letter": "M",
+      "sourceBounds": [
+        727,
+        397,
+        810,
+        487
+      ],
+      "sourceBulb": [
+        760,
+        396
+      ],
+      "height": 90,
+      "width": 83
+    },
+    {
+      "letter": "N",
+      "sourceBounds": [
+        814,
+        375,
+        884,
+        474
+      ],
+      "sourceBulb": [
+        845,
+        386
+      ],
+      "height": 99,
+      "width": 70
+    },
+    {
+      "letter": "O",
+      "sourceBounds": [
+        895,
+        377,
+        968,
+        469
+      ],
+      "sourceBulb": [
+        928,
+        357
+      ],
+      "height": 92,
+      "width": 73
+    },
+    {
+      "letter": "P",
+      "sourceBounds": [
+        983,
+        364,
+        1065,
+        462
+      ],
+      "sourceBulb": [
+        1016,
+        349
+      ],
+      "height": 98,
+      "width": 82
+    },
+    {
+      "letter": "Q",
+      "sourceBounds": [
+        1106,
+        362,
+        1205,
+        449
+      ],
+      "sourceBulb": [
+        1155,
+        347
+      ],
+      "height": 87,
+      "width": 99
+    },
+    {
+      "letter": "R",
+      "sourceBounds": [
+        488,
+        534,
+        561,
+        620
+      ],
+      "sourceBulb": [
+        466,
+        533
+      ],
+      "height": 86,
+      "width": 73
+    },
+    {
+      "letter": "S",
+      "sourceBounds": [
+        569,
+        535,
+        638,
+        618
+      ],
+      "sourceBulb": [
+        513,
+        518
+      ],
+      "height": 83,
+      "width": 69
+    },
+    {
+      "letter": "T",
+      "sourceBounds": [
+        645,
+        545,
+        719,
+        618
+      ],
+      "sourceBulb": [
+        592,
+        524
+      ],
+      "height": 73,
+      "width": 74
+    },
+    {
+      "letter": "U",
+      "sourceBounds": [
+        729,
+        537,
+        799,
+        618
+      ],
+      "sourceBulb": [
+        674,
+        532
+      ],
+      "height": 81,
+      "width": 70
+    },
+    {
+      "letter": "V",
+      "sourceBounds": [
+        805,
+        524,
+        883,
+        614
+      ],
+      "sourceBulb": [
+        845,
+        529
+      ],
+      "height": 90,
+      "width": 78
+    },
+    {
+      "letter": "W",
+      "sourceBounds": [
+        882,
+        528,
+        976,
+        615
+      ],
+      "sourceBulb": [
+        922,
+        512
+      ],
+      "height": 87,
+      "width": 94
+    },
+    {
+      "letter": "X",
+      "sourceBounds": [
+        977,
+        515,
+        1049,
+        608
+      ],
+      "sourceBulb": [
+        1013,
+        510
+      ],
+      "height": 93,
+      "width": 72
+    },
+    {
+      "letter": "Y",
+      "sourceBounds": [
+        1050,
+        502,
+        1130,
+        611
+      ],
+      "sourceBulb": [
+        1098,
+        492
+      ],
+      "height": 109,
+      "width": 80
+    },
+    {
+      "letter": "Z",
+      "sourceBounds": [
+        1131,
+        509,
+        1235,
+        600
+      ],
+      "sourceBulb": [
+        1178,
+        496
+      ],
+      "height": 91,
+      "width": 104
+    }
+  ]
+}

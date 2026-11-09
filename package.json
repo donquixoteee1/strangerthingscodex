@@ -1,0 +1,26 @@
+{
+  "name": "stranger-codex",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "assets": "python3 scripts/prepare-assets.py",
+    "perf": "node scripts/performance.mjs && node scripts/performance-extra.mjs && node scripts/report-performance.mjs",
+    "build:native": "node scripts/build-native.mjs",
+    "doctor": "node scripts/doctor.mjs",
+    "check": "npm run build && npm run build:native && npm test && npm run test:browser"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.1.0",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

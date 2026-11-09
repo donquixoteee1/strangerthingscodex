@@ -1,0 +1,23 @@
+import {test,expect} from '@playwright/test';
+import {resolve} from 'node:path';
+test('isolated native bridge reads input, preserves editor and cleans up on SPA replacement',async({page})=>{
+ await page.goto('/');
+ await page.setContent('<main id="home" style="position:relative;height:900px"><form id="native" style="position:absolute;top:700px;width:700px"><textarea id="editor">HELLO</textarea><button>Send</button></form></main>');
+ await page.addScriptTag({path:resolve('native-dist/stranger-skin.js')});
+ await page.evaluate(()=>{(window as any).nativeHandle=(window as any).StrangerSkin.mount({container:document.querySelector('#home'),composer:document.querySelector('#native'),editor:document.querySelector('#editor')});});
+ await expect(page.locator('[data-stranger-native]')).toHaveCount(1);
+ await expect(page.locator('[data-letter="L"]')).toHaveAttribute('data-count','2');
+ await expect(page.getByLabel('Size')).toBeVisible();
+ await page.getByRole('button',{name:'ASCII',exact:true}).click();
+ await expect(page.getByLabel('Size')).toBeVisible();
+ await page.locator('#editor').fill('WORLD');
+ await expect(page.locator('[data-letter="H"]')).toHaveAttribute('data-count','0');
+ await expect(page.locator('[data-letter="W"]')).toHaveAttribute('data-count','1');
+ expect(await page.evaluate(()=>(window as any).nativeHandle.diagnostics.canWrite)).toBe(false);
+ for(let i=0;i<3;i++)await page.evaluate(()=>{(window as any).StrangerSkin.mount({container:document.querySelector('#home'),composer:document.querySelector('#native'),editor:document.querySelector('#editor')});});
+ await expect(page.locator('[data-stranger-native]')).toHaveCount(1);
+ await expect(page.locator('#editor')).toHaveValue('WORLD');
+ await page.evaluate(()=>document.querySelector('#native')!.remove());
+ await expect(page.locator('[data-stranger-native]')).toHaveCount(0);
+ expect(await page.evaluate(()=>(window as any).nativeHandle.diagnostics.timers)).toBe(0);
+});

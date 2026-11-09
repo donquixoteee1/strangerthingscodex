@@ -1,0 +1,3 @@
+import {expect,test,vi} from 'vitest';
+import {InputSync} from '../src/core/InputSync';
+test('read-only adapter never receives writes; explicit mode and IME gate writes',()=>{let text='';const write=vi.fn(l=>{text+=l;return true;});const adapter={canWrite:true,findComposer:()=>null,readText:()=>text,readSelection:()=>null,insertLetter:write,observeChanges:()=>()=>{},dispose:()=>{}};const sync=new InputSync(adapter,()=>{});expect(sync.insert('A')).toBe(false);sync.english=true;sync.composing=true;expect(sync.insert('A')).toBe(false);sync.composing=false;adapter.canWrite=false;expect(sync.insert('A')).toBe(false);adapter.canWrite=true;expect(sync.insert('A')).toBe(true);expect(text).toBe('A');expect(write).toHaveBeenCalledTimes(1);sync.dispose();});

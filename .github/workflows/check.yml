@@ -1,0 +1,23 @@
+name: Validate preview and experimental bridge
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chrome
+      - run: npm run check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: preview-and-experimental-bridge
+          path: |
+            dist/
+            native-dist/
+            docs/INSTALL.md

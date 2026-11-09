@@ -1,0 +1,5 @@
+.stranger-scene{position:absolute;inset:0;pointer-events:none;overflow:hidden}.ascii-wall{width:100%;height:100%;object-fit:cover;opacity:.22;mask-image:radial-gradient(ellipse at center,#000,transparent 80%)}.alphabet{position:absolute;width:min(700px,90%);aspect-ratio:1000/390;left:50%;transform:translateX(-50%);top:25%;}.alphabet>img,.wires{position:absolute;width:100%;height:100%;inset:0}.wires path{fill:none;stroke:#36312a;stroke-width:1.2}.ascii-sofa{position:absolute;transform:translate(-50%,-100%);height:auto;opacity:1;filter:drop-shadow(0 9px 7px #0005)}@media(max-width:620px){.alphabet{top:32%;width:98%}}
+
+.alphabet>img{opacity:.9}.ascii-wall{filter:saturate(.75)}
+
+.alphabet{container-type:inline-size}.alphabet>img{opacity:1}.wires path{stroke:#61523c;stroke-width:1.1;opacity:.65}

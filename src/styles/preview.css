@@ -1,0 +1,11 @@
+.preview-toolbar{position:absolute;z-index:5;top:74px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;color:#999;font:11px monospace;white-space:nowrap;padding:7px 12px;background:#191919;border:1px solid #303030;border-radius:8px}
+.preview-modes{display:flex;gap:3px}.preview-modes button{font:11px monospace;color:#888;background:none;border:0;padding:7px 13px;border-radius:4px;cursor:pointer}.preview-modes button[aria-pressed=true]{background:#38352e;color:#f1dab7}.preview-toolbar input{width:100px;accent-color:#d8bc99}.preview-toolbar output{width:36px;color:#ccc}.preview-toolbar input:disabled{opacity:.3}.preview-toolbar button:focus-visible,.preview-toolbar input:focus-visible{outline:2px solid #d8bc99;outline-offset:3px}
+.pixel-art{image-rendering:pixelated;pointer-events:none}.welcome h1{position:relative}.welcome .pixel-art{position:absolute;left:50%;top:0;transform:translateX(-50%)}
+img.alphabet-art:not(.pixel-art),img.ascii-sofa:not(.pixel-art),img.ascii-title:not(.pixel-art){visibility:hidden}
+[data-preview=pixel] .light .bulb{font-size:0;width:.8cqw;height:1.4cqw;background:color-mix(in srgb,var(--light) 85%,white);opacity:.86;box-shadow:0 -.35cqw 0 -.12cqw #b7b0a0;clip-path:polygon(25% 0,75% 0,75% 15%,100% 15%,100% 80%,75% 80%,75% 100%,25% 100%,25% 80%,0 80%,0 15%,25% 15%)}
+[data-preview=pixel] .light .ascii-halo{font-size:0;width:2cqw;height:2cqw;background:color-mix(in srgb,var(--light) 68%,transparent);box-shadow:0 0 0 .7cqw color-mix(in srgb,var(--light) 34%,transparent),0 0 0 1.4cqw color-mix(in srgb,var(--light) 16%,transparent)}
+[data-preview=pixel] .light:is(.selected,.energized,.hovered,:focus-visible,.igniting) .bulb{background:#fffdf4;opacity:1}
+[data-preview=pixel] .wires{shape-rendering:crispEdges}
+@media(max-width:620px){.preview-toolbar{top:67px;gap:8px;padding:6px}.preview-modes button{padding:7px 8px}.preview-toolbar input{width:64px}.preview-toolbar label{font-size:10px}}
+[data-preview=ascii] .pixel-art{image-rendering:auto}
+[data-preview=pixel] .ascii-sofa{filter:none}

@@ -4,6 +4,8 @@ A dark living-room scene with glowing alphabet lights, crisp pixels and animated
 
 **Status: standalone preview ready; native Codex integration is experimental and not yet install-ready.** This is an unofficial project, not an OpenAI plugin or a Dream Skin import package. See [installation and compatibility](docs/INSTALL.md).
 
+[Open the online preview](https://donquixoteee1.github.io/strangerthingscodex/)
+
 ## Run locally
 
 Node.js 22.12+ is required.

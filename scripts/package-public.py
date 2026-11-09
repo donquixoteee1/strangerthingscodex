@@ -6,7 +6,7 @@ release=root/'release'; release.mkdir(exist_ok=True)
 files=[]
 for folder in ['src','public','.github','tests']:
  files.extend(p for p in (root/folder).rglob('*') if p.is_file() and p.name!='.DS_Store')
-for name in ['README.md','.gitignore','package.json','package-lock.json','tsconfig.json','vite.config.ts','vitest.config.ts','playwright.config.ts','docs/INSTALL.md','scripts/build-native.mjs','scripts/doctor.mjs','scripts/prepare-assets.py','scripts/reference-alphabet.py','scripts/requirements.txt','scripts/package-public.py']:
+for name in ['index.html','README.md','.gitignore','package.json','package-lock.json','tsconfig.json','vite.config.ts','vitest.config.ts','playwright.config.ts','docs/INSTALL.md','scripts/build-native.mjs','scripts/doctor.mjs','scripts/prepare-assets.py','scripts/reference-alphabet.py','scripts/requirements.txt','scripts/package-public.py']:
  files.append(root/name)
 # Keep optional performance tooling reproducible without distributing local measurements.
 for p in (root/'scripts').glob('*.mjs'):

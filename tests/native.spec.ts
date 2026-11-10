@@ -8,7 +8,6 @@ test('isolated native bridge reads input, preserves editor and cleans up on SPA 
  await expect(page.locator('[data-stranger-native]')).toHaveCount(1);
  await expect(page.locator('[data-letter="L"]')).toHaveAttribute('data-count','2');
  await expect(page.getByLabel('Size')).toBeVisible();
- await page.getByRole('button',{name:'ASCII',exact:true}).click();
  await expect(page.getByLabel('Size')).toBeVisible();
  await page.locator('#editor').fill('WORLD');
  await expect(page.locator('[data-letter="H"]')).toHaveAttribute('data-count','0');
@@ -20,4 +19,29 @@ test('isolated native bridge reads input, preserves editor and cleans up on SPA 
  await page.evaluate(()=>document.querySelector('#native')!.remove());
  await expect(page.locator('[data-stranger-native]')).toHaveCount(0);
  expect(await page.evaluate(()=>(window as any).nativeHandle.diagnostics.timers)).toBe(0);
+});
+test('automatic new-chat integration mounts once and respects Remove skin',async({page})=>{
+ await page.goto('/');
+ await page.setContent('<main style="height:900px"><span data-testid="home-icon"></span><form class="_ComposerLayoutRoot_fixture" style="position:absolute;top:700px;width:700px"><textarea>HELLO</textarea></form></main>');
+ await page.addScriptTag({path:resolve('native-dist/stranger-auto.js')});
+ await expect(page.locator('[data-stranger-native]')).toHaveCount(1);
+ await expect(page.locator('[data-letter="L"]')).toHaveAttribute('data-count','2');
+ await page.getByRole('button',{name:'Remove skin',exact:true}).click();
+ await page.waitForTimeout(350);
+ await expect(page.locator('[data-stranger-native]')).toHaveCount(0);
+ await expect(page.locator('main')).not.toHaveAttribute('data-stranger-active');
+ await expect(page.locator('textarea')).toHaveValue('HELLO');
+ expect(await page.locator('main').evaluate(n=>(n as HTMLElement).style.position)).toBe('');
+});
+test('nested composer stays above sofa without rectangular paint and default greeting is hidden',async({page})=>{
+ await page.goto('/');
+ await page.setContent('<main style="height:1000px"><span data-testid="home-icon"></span><div style="position:relative;z-index:0"><h1>您想让我们在 <span>project</span> 中构建什么？</h1><form class="_ComposerLayoutRoot_fixture" style="position:absolute;top:750px;width:700px"><textarea></textarea></form></div></main>');
+ await page.addScriptTag({path:resolve('native-dist/stranger-auto.js')});
+ await expect(page.locator('[data-stranger-caption]')).toHaveCount(0);
+ await expect(page.locator('h1')).toBeHidden();
+ const styles=await page.locator('form').evaluate(n=>({background:n.style.background,blur:n.style.backdropFilter,above:Number(getComputedStyle(n.parentElement!).zIndex)>Number(getComputedStyle(document.querySelector('[data-stranger-native]')!).zIndex)}));
+ expect(styles).toEqual({background:'',blur:'',above:true});
+ await page.getByRole('button',{name:'Remove skin',exact:true}).click();
+ await expect(page.locator('[data-stranger-front]')).toHaveCount(0);
+ await expect(page.locator('h1')).toBeVisible();
 });

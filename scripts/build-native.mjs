@@ -6,3 +6,5 @@ for(const name of await readdir('public/scene')){
  assets[name]=`data:${name.endsWith('.png')?'image/png':'image/svg+xml'};base64,${(await readFile(`public/scene/${name}`)).toString('base64')}`;
 }
 await build({configFile:false,publicDir:false,define:{__SKIN_ASSETS__:JSON.stringify(assets)},css:{postcss:{plugins:[]}},build:{outDir:'native-dist',lib:{entry:'src/native/entry.ts',name:'StrangerSkin',formats:['iife'],fileName:()=> 'stranger-skin.js'}}});
+
+await build({configFile:false,publicDir:false,define:{__SKIN_ASSETS__:JSON.stringify(assets)},css:{postcss:{plugins:[]}},build:{outDir:'native-dist',emptyOutDir:false,lib:{entry:'src/native/auto.ts',name:'StrangerAutoSkin',formats:['iife'],fileName:()=> 'stranger-auto.js'}}});

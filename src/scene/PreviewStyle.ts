@@ -1,22 +1,16 @@
 import { sceneAsset } from './assets';
-type Mode = 'pixel' | 'ascii';
 type Pair = {overlay: HTMLImageElement; source: HTMLImageElement; pixels?: ImageData; phase: number};
 /** Rebuild only on controls, source load, or the existing sparse animation tick. */
 export class PreviewStyle {
-  private size = 4;
   private density = 7;
-  private mode: Mode = 'pixel';
   private abort = new AbortController();
   private observer: MutationObserver;
   private pairs = new Map<HTMLImageElement, Pair>();
   constructor(private host: HTMLElement) {
     const signal = this.abort.signal;
-    this.host.querySelectorAll<HTMLButtonElement>('[data-preview-mode]').forEach(button => {
-      button.addEventListener('click', () => { this.mode = button.dataset.previewMode as Mode; this.update(); this.render(); }, {signal});
-    });
     this.host.querySelector<HTMLInputElement>('#pixel-size')!.addEventListener('input', event => {
       const value=Number((event.target as HTMLInputElement).value);
-      if(this.mode==='pixel')this.size=value;else this.density=value;
+      this.density=value;
       this.update();this.render();
     }, {signal});
     this.observer = new MutationObserver(() => this.connect());
@@ -30,7 +24,7 @@ export class PreviewStyle {
       else {
         if(pair.overlay.style.cssText !== original.style.cssText) pair.overlay.style.cssText = original.style.cssText;
         const phase=Number(original.dataset.frame??0);
-        if(phase!==pair.phase){pair.phase=phase;if(this.mode==='ascii')this.sample(pair);}
+        if(phase!==pair.phase){pair.phase=phase;this.sample(pair);}
       }
     }
     const names = {'alphabet-art':'alphabet', 'ascii-sofa':'sofa', 'ascii-title':'title'};
@@ -53,7 +47,6 @@ export class PreviewStyle {
   private sample({overlay,pixels,phase}: Pair) {
     if(!pixels)return;
     const {width,height,data}=pixels;
-    if(this.mode==='ascii'){
       const step=13-this.density;
       const rows:string[]=[];
       for(let y=0;y<height;y+=step){
@@ -69,26 +62,17 @@ export class PreviewStyle {
       }
       const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}"><g font-family="monospace" font-size="${step*.95}" style="white-space:pre;font-variant-ligatures:none">${rows.join('')}</g></svg>`;
       overlay.src=`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-    }else{
-      const canvas=document.createElement('canvas');canvas.width=Math.ceil(width/this.size);canvas.height=Math.ceil(height/this.size);
-      const ctx=canvas.getContext('2d')!;const result=ctx.createImageData(canvas.width,canvas.height);
-      // Nearest source sample, opaque edges, and a restrained palette: no averaged blur.
-      for(let y=0;y<canvas.height;y++)for(let x=0;x<canvas.width;x++){
-        const source=(Math.min(height-1,y*this.size+Math.floor(this.size/2))*width+Math.min(width-1,x*this.size+Math.floor(this.size/2)))*4;
-        const target=(y*canvas.width+x)*4;
-        for(let c=0;c<3;c++)result.data[target+c]=Math.min(255,Math.round(data[source+c]/16)*16);
-        result.data[target+3]=data[source+3]>=128?255:0;
-      }
-      ctx.putImageData(result,0,0);overlay.src=canvas.toDataURL();
-    }
   }
   private update() {
-    this.host.dataset.preview=this.mode;
-    this.host.querySelectorAll<HTMLButtonElement>('[data-preview-mode]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.previewMode===this.mode)));
+    this.host.dataset.preview='ascii';
+    const root=this.host.getRootNode();
+    const stage=this.host.closest<HTMLElement>('#stage') ?? (root instanceof ShadowRoot ? root.host.parentElement : null);
+    if(stage instanceof HTMLElement) stage.dataset.strangerTheme='black';
     const slider=this.host.querySelector<HTMLInputElement>('#pixel-size')!;
-    slider.min=this.mode==='pixel'?'2':'1';slider.max=this.mode==='pixel'?'12':'10';slider.value=String(this.mode==='pixel'?this.size:this.density);
+    slider.min='1';slider.max='10';slider.value=String(this.density);
     this.host.querySelector('#detail-label')!.textContent='Size';
-    this.host.querySelector<HTMLOutputElement>('#pixel-value')!.value=this.mode==='pixel'?`${this.size} px`:`${this.density}/10`;
+    this.host.querySelector<HTMLOutputElement>('#pixel-value')!.value=`${this.density}/10`;
+
   }
   dispose() { this.abort.abort();this.observer.disconnect();for(const pair of this.pairs.values())pair.overlay.remove();this.pairs.clear(); }
 }

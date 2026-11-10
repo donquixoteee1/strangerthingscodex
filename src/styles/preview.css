@@ -9,3 +9,5 @@ img.alphabet-art:not(.pixel-art),img.ascii-sofa:not(.pixel-art),img.ascii-title:
 @media(max-width:620px){.preview-toolbar{top:67px;gap:8px;padding:6px}.preview-modes button{padding:7px 8px}.preview-toolbar input{width:64px}.preview-toolbar label{font-size:10px}}
 [data-preview=ascii] .pixel-art{image-rendering:auto}
 [data-preview=pixel] .ascii-sofa{filter:none}
+
+[data-stranger-theme=black]{background:#080808!important}
